@@ -51,7 +51,7 @@ def get_data(faces):
     '''
     
     x, y = [], []
-    for label, filenames in train_faces.items():
+    for label, filenames in faces.items():
         for filename in filenames:
             image = cv2.imread(filename)
             gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -208,9 +208,9 @@ class Model():
                     print('step {}, the train accuracy: {}'.format(i, train_accuracy))
                     
                     checkpoint_path = 'models'
-                    if os.path,exists(checkpoint_path):
+                    if not os.path.exists(checkpoint_path):
                         os.makedirs(checkpoint_path)
-                    saver.save(sess, os.path.join(checkpoint, 'model.ckpt'), global_step=i)
+                    saver.save(sess, os.path.join(checkpoint_path, 'model.ckpt'), global_step=i)
                     
                 acc = sess.run(accuracy, feed_dict={self.x: batch_x, self.y_: batch_y, self.keep_prob: 1.0})
                 loss = sess.run(cross_entropy, feed_dict={self.x: batch_x, self.y_: batch_y, self.keep_prob: 1.0})

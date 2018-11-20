@@ -210,7 +210,7 @@ class Model():
                     checkpoint_path = 'models'
                     if os.path,exists(checkpoint_path):
                         os.makedirs(checkpoint_path)
-                    saver.save(sess, os.path.join(checkpoint, 'model.ckpt'), global_step=i))
+                    saver.save(sess, os.path.join(checkpoint, 'model.ckpt'), global_step=i)
                     
                 acc = sess.run(accuracy, feed_dict={self.x: batch_x, self.y_: batch_y, self.keep_prob: 1.0})
                 loss = sess.run(cross_entropy, feed_dict={self.x: batch_x, self.y_: batch_y, self.keep_prob: 1.0})

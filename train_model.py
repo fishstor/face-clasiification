@@ -180,7 +180,7 @@ class Model():
         w_out = self.weight_variable([1024, 7])
         b_out = self.bias_variable([7])
 
-        f_out = tf.matmul(fc2_dropout, w_out) + b_out
+        f_out = tf.matmul(fc2_dropout, w_out, name='f_out') + b_out
 
         # loss
         cross_entropy = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=self.y_, logits=f_out))
